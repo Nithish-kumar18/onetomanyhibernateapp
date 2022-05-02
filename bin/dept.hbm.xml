@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    
+    <class name="com.hibernate.models.Dept" table="Department">
+	    <id name="deptno" >
+	    	<generator class="increment" />
+	    </id>    
+	    
+	    <property name="deptname" />
+		
+		<list name="emps" cascade="all">
+			    <key column="deptno" /> <!--  foriegn key column -->
+			    <index column="type" />
+			    <one-to-many class="com.hibernate.models.Employee" />
+		</list> 	
+ 	</class>
+ 	
+ 	<class name="com.hibernate.models.Employee" table="Employees">
+	 	<id name="empno" >
+	 		<generator class="increment" />
+	 	</id>
+	 	<property name="empname" />
+	 	<property name="job" />
+ 	</class>
+    
+    </hibernate-mapping>
